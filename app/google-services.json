@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "220917337747",
+    "project_id": "ecommercecourse-434ed",
+    "storage_bucket": "ecommercecourse-434ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220917337747:android:dc93c28a175529e15bc766",
+        "android_client_info": {
+          "package_name": "com.doubleclick.ecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "220917337747-giafhot6p1n9dbj67tlq9delkt28h1ts.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiV2l4L3Qx07IzSFOeS03ANhJmXJCiv30"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "220917337747-giafhot6p1n9dbj67tlq9delkt28h1ts.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
