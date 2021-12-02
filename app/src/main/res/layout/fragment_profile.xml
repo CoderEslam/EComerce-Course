@@ -29,6 +29,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
+
+
             <TextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
@@ -39,6 +42,29 @@
                 app:layout_constraintEnd_toEndOf="@+id/image"
                 app:layout_constraintStart_toStartOf="@+id/image"
                 app:layout_constraintTop_toBottomOf="@+id/image" />
+
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/loading"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/image"
+                app:layout_constraintEnd_toEndOf="@+id/image"
+                app:layout_constraintStart_toStartOf="@+id/image"
+                app:layout_constraintTop_toTopOf="@+id/image" />
+
+            <ImageView
+                android:background="@drawable/item_iamge"
+                android:id="@+id/changeimage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="72dp"
+                android:layout_marginTop="68dp"
+                android:clickable="true"
+                android:src="@drawable/ic_menu_camera"
+                app:layout_constraintStart_toStartOf="@+id/image"
+                app:layout_constraintTop_toTopOf="@+id/image" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

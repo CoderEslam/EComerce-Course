@@ -6,34 +6,37 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/home"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_cart"
+            android:icon="@drawable/shopping_cart"
+            android:title="Cart" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:iconTint="@color/red"
+            android:id="@+id/nav_favorite"
+            android:icon="@drawable/favorite"
+            android:title="favorite" />
 
         <item
-            android:id="@+id/Favorat"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/info"
+            android:icon="@drawable/info"
+            android:title="info" />
 
-        <item
-            android:id="@+id/cart"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+
         <item
             android:id="@+id/profile"
             android:icon="@drawable/person"
             android:title="Profile" />
 
         <item
+            android:id="@+id/adminFragment"
+            android:icon="@drawable/poweroff"
+            android:title="Admin" />
+
+        <item
             android:id="@+id/logout"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:icon="@drawable/poweroff"
+            android:title="Logout" />
     </group>
 </menu>
