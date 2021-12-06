@@ -1,4 +1,4 @@
-package com.doubleclick.ecommerce;
+package com.doubleclick.ecommerce.model;
 
 public class Users {
 

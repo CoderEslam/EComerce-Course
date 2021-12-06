@@ -23,15 +23,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
-        /*listener = new FirebaseAuth.AuthStateListener() {
+        listener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user!=null){
-
+                    Intent intent = new Intent(MainActivity.this,Home.class);
+                    startActivity(intent);
                 }
             }
-        };*/
+        };
     }
 
     public void Create(View view) {
@@ -41,22 +42,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void SignIn(View view) {
-
         Intent intent = new Intent(MainActivity.this,LoginActivity.class);
         startActivity(intent);
-
     }
 
 
     @Override
     protected void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                Intent intent = new Intent(MainActivity.this,Home.class);
-                startActivity(intent);
-            }
-        });
+        mAuth.addAuthStateListener(listener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mAuth.removeAuthStateListener(listener);
     }
 }

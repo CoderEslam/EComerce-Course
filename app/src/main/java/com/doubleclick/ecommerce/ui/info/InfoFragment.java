@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.doubleclick.ecommerce.MainActivity;
@@ -21,7 +22,6 @@ import com.doubleclick.ecommerce.R;
  * create an instance of this fragment.
  */
 public class InfoFragment extends Fragment {
-
 
 
     public InfoFragment() {
@@ -49,27 +49,33 @@ public class InfoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_info, container, false);
-
-
+        Button Call = view.findViewById(R.id.Call);
+        Call.setOnClickListener(v -> {
+            sendEmail();
+        });
 
         return view;
     }
 
-    protected void sendEmail(View view) {
-        Log.i("Send email", "");
-        String[] TO = {"eslamghazy600@gmail.com"};
-        String[] CC = {""};
-        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        emailIntent.setData(Uri.parse("mailto:"));
-        emailIntent.setType("text/plain");
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
-        try {
-            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(getContext(), "There is no email client installed.", Toast.LENGTH_SHORT).show();
+
+    public void sendEmail() {
+        String massege = "";
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setData(Uri.parse("mailto"));
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"eslamghazy858@gmail.com"});
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Ask");
+        intent.putExtra(Intent.EXTRA_TEXT, massege);
+        if (intent.resolveActivity(getContext().getPackageManager()) != null) {
+            startActivity(intent);
         }
+
+
+//        Intent intent = new Intent(Intent.ACTION_DIAL);
+//        intent.setData(Uri.parse("tel:+201221930858"));
+//        startActivity(intent);
+
+
     }
 
 }
