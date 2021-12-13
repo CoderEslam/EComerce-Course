@@ -1,5 +1,6 @@
 package com.doubleclick.ecommerce.Adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.doubleclick.ecommerce.R;
-import com.doubleclick.ecommerce.model.Allprodusts;
+import com.doubleclick.ecommerce.model.AllCategorys;
+import com.doubleclick.ecommerce.ui.Admin.UploadActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -18,11 +20,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProducctAdapter extends RecyclerView.Adapter<ProducctAdapter.ProductViewHolder> {
 
-    public ProducctAdapter(ArrayList<Allprodusts> allprodusts) {
+    public ProducctAdapter(ArrayList<AllCategorys> allprodusts) {
         this.allprodusts = allprodusts;
     }
 
-    ArrayList<Allprodusts> allprodusts = new ArrayList<>();
+    ArrayList<AllCategorys> allprodusts = new ArrayList<>();
+
     @NonNull
     @Override
     public ProducctAdapter.ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -36,6 +39,15 @@ public class ProducctAdapter extends RecyclerView.Adapter<ProducctAdapter.Produc
 //        holder.image.setImageResource(allprodusts.get(position).getDrwableimage());
         Picasso.get().load(allprodusts.get(position).getImage()).into(holder.image);
         holder.name.setText(allprodusts.get(position).getName());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.itemView.getContext(), UploadActivity.class);
+                intent.putExtra("Category",allprodusts.get(position).getName());
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
 
     }
 

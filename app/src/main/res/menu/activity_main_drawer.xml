@@ -31,7 +31,12 @@
 
         <item
             android:id="@+id/adminFragment"
-            android:icon="@drawable/poweroff"
+            android:icon="@drawable/person_search"
+            android:title="Seller" />
+
+        <item
+            android:id="@+id/adminActivity"
+            android:icon="@drawable/person_search"
             android:title="Admin" />
 
         <item

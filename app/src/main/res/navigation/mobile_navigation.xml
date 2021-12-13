@@ -34,7 +34,12 @@
         tools:layout="@layout/fragment_info" />
     <fragment
         android:id="@+id/adminFragment"
-        android:name="com.doubleclick.ecommerce.ui.Admin.AdminFragment"
+        android:name="com.doubleclick.ecommerce.ui.Admin.SellerFragment"
         android:label="fragment_admin"
         tools:layout="@layout/fragment_admin" />
+    <activity
+        android:id="@+id/adminActivity"
+        android:name="com.doubleclick.ecommerce.ui.Admin.AdminActivity"
+        android:label="activity_admin"
+        tools:layout="@layout/activity_admin" />
 </navigation>

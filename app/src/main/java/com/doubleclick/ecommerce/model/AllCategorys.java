@@ -1,6 +1,6 @@
 package com.doubleclick.ecommerce.model;
 
-public class Allprodusts {
+public class AllCategorys {
 
     private String name;
     private String image;
@@ -15,15 +15,15 @@ public class Allprodusts {
 
     private int drwableimage;
 
-    public Allprodusts(String name, String image) {
+    public AllCategorys(String name, String image) {
         this.name = name;
         this.image = image;
     }
 
-    public Allprodusts() {
+    public AllCategorys() {
     }
 
-    public Allprodusts(String name, int drwableimage) {
+    public AllCategorys(String name, int drwableimage) {
         this.name = name;
         this.drwableimage = drwableimage;
     }

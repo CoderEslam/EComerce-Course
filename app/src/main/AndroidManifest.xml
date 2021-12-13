@@ -11,6 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECommerce">
         <activity
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:name=".ui.Admin.AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Admin.UploadActivity"
+            android:exported="false" />
+        <activity
             android:name=".Home"
             android:exported="false"
             android:label="@string/title_activity_home"

@@ -2,9 +2,7 @@ package com.doubleclick.ecommerce.Repository;
 
 import androidx.annotation.NonNull;
 
-import com.doubleclick.ecommerce.model.Allprodusts;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.doubleclick.ecommerce.model.AllCategorys;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -13,13 +11,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class AllProducts {
+public class AllCategory {
 
     DatabaseReference reference;
-    ArrayList<Allprodusts> allprodustsArrayList = new ArrayList<>();
+    ArrayList<AllCategorys> allCategorysArrayList = new ArrayList<>();
     ProductInterface productInterface;
 
-    public AllProducts(ProductInterface productInterface) {
+    public AllCategory(ProductInterface productInterface) {
         this.productInterface = productInterface;
     }
 
@@ -42,11 +40,11 @@ public class AllProducts {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                allprodustsArrayList.clear();
+                allCategorysArrayList.clear();
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    Allprodusts allprodusts = dataSnapshot.getValue(Allprodusts.class);
-                    allprodustsArrayList.add(allprodusts);
-                    productInterface.getProducts(allprodustsArrayList);
+                    AllCategorys allCategorys = dataSnapshot.getValue(AllCategorys.class);
+                    allCategorysArrayList.add(allCategorys);
+                    productInterface.getProducts(allCategorysArrayList);
                 }
             }
 
@@ -59,7 +57,7 @@ public class AllProducts {
     }
 
     public interface ProductInterface{
-        void getProducts(ArrayList<Allprodusts> allprodustsArrayList);
+        void getProducts(ArrayList<AllCategorys> allCategorysArrayList);
     }
 
 

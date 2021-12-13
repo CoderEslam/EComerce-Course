@@ -6,9 +6,11 @@
         <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/drawable/buttons_white.xml" value="0.2078125" />
         <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/drawable/favorite.xml" value="0.2078125" />
         <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/drawable/item_iamge.xml" value="0.2078125" />
+        <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/layout/activity_admin.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/layout/activity_upload.xml" value="0.25" />
         <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/layout/app_bar_home.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/layout/content_home.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/layout/fragment_admin.xml" value="0.2" />
@@ -21,6 +23,7 @@
         <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/layout/item_view.xml" value="0.25" />
         <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/layout/nav_header_home.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/layout/order_status_layout.xml" value="0.25" />
+        <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/layout/product.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/layout/register.xml" value="0.22" />
         <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/menu/activity_main_drawer.xml" value="0.33" />
         <entry key="..\:/Users/eslam/AndroidStudioProjects/Course/ECommerce/app/src/main/res/menu/add_product.xml" value="0.19166666666666668" />
@@ -33,5 +36,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.33" />
+      </ProjectState>
+    </option>
   </component>
 </project>

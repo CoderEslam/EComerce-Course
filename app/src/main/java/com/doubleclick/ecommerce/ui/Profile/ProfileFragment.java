@@ -100,7 +100,7 @@ public class ProfileFragment extends Fragment {
         changeimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openGellery();
+                openGellery("image/*");
             }
         });
 
@@ -109,9 +109,9 @@ public class ProfileFragment extends Fragment {
     }
 
 
-    private void openGellery() {
+    private void openGellery(String type) {
         Intent intent = new Intent();
-        intent.setType("image/*");
+        intent.setType(type);
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, request_code);
     }
