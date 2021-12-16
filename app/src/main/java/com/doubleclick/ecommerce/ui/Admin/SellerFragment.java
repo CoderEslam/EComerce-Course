@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.doubleclick.ecommerce.Adapters.ProducctAdapter;
+import com.doubleclick.ecommerce.Adapters.CategoryAdapter;
 import com.doubleclick.ecommerce.R;
 import com.doubleclick.ecommerce.model.AllCategorys;
 import com.doubleclick.ecommerce.viewModel.ProductViewModel;
@@ -70,8 +70,8 @@ public class SellerFragment extends Fragment {
             @Override
             public void onChanged(ArrayList<AllCategorys> allCategorysArrayList) {
                 Log.e("Data", allCategorysArrayList.toString());
-                ProducctAdapter producctAdapter = new ProducctAdapter(allCategorysArrayList);
-                Products.setAdapter(producctAdapter);
+                CategoryAdapter categoryAdapter = new CategoryAdapter(allCategorysArrayList);
+                Products.setAdapter(categoryAdapter);
             }
         });
         referenceProducts = FirebaseStorage.getInstance().getReference().child("ProductsImage");

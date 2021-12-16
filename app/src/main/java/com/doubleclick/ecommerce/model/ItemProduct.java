@@ -89,4 +89,18 @@ public class ItemProduct {
     }
 
 
+    @Override
+    public String toString() {
+        return "ItemProduct{" +
+                "Name='" + Name + '\'' +
+                ", Description='" + Description + '\'' +
+                ", userId='" + userId + '\'' +
+                ", price='" + price + '\'' +
+                ", discountPrice='" + discountPrice + '\'' +
+                ", image='" + image + '\'' +
+                ", trade='" + trade + '\'' +
+                ", pushId='" + pushId + '\'' +
+                ", Category='" + Category + '\'' +
+                '}';
+    }
 }

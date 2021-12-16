@@ -18,9 +18,9 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ProducctAdapter extends RecyclerView.Adapter<ProducctAdapter.ProductViewHolder> {
+public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ProductViewHolder> {
 
-    public ProducctAdapter(ArrayList<AllCategorys> allprodusts) {
+    public CategoryAdapter(ArrayList<AllCategorys> allprodusts) {
         this.allprodusts = allprodusts;
     }
 
@@ -28,13 +28,13 @@ public class ProducctAdapter extends RecyclerView.Adapter<ProducctAdapter.Produc
 
     @NonNull
     @Override
-    public ProducctAdapter.ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CategoryAdapter.ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product,parent,false);
         return new ProductViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProducctAdapter.ProductViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CategoryAdapter.ProductViewHolder holder, int position) {
 
 //        holder.image.setImageResource(allprodusts.get(position).getDrwableimage());
         Picasso.get().load(allprodusts.get(position).getImage()).into(holder.image);

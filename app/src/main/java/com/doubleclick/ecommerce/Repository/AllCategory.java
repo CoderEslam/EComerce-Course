@@ -23,7 +23,7 @@ public class AllCategory {
 
     public void getAllProduct(){
 
-        reference = FirebaseDatabase.getInstance().getReference().child("AllProducts");
+        reference = FirebaseDatabase.getInstance().getReference().child("AllCategory");
         reference.keepSynced(true);
 //        reference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
 //            @Override
