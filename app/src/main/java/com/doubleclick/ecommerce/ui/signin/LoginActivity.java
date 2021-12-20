@@ -1,4 +1,4 @@
-package com.doubleclick.ecommerce;
+package com.doubleclick.ecommerce.ui.signin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import com.doubleclick.ecommerce.Home;
+import com.doubleclick.ecommerce.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -41,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             progressBar.setVisibility(View.GONE);
-                            startActivity(new Intent(LoginActivity.this,Home.class));
+                            startActivity(new Intent(LoginActivity.this, Home.class));
                         }
                     }
                 });

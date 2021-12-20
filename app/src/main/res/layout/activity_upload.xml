@@ -25,7 +25,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Item_image" />
 
     <EditText
-        android:id="@+id/price"
+        android:id="@+id/price_discount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="price"
@@ -39,10 +39,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="price after sell"
-        app:layout_constraintBottom_toBottomOf="@+id/price"
+        app:layout_constraintBottom_toBottomOf="@+id/price_discount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/price"
+        app:layout_constraintStart_toEndOf="@+id/price_discount"
         app:layout_constraintTop_toBottomOf="@+id/Item_name" />
 
     <EditText
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:hint="description"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/price" />
+        app:layout_constraintTop_toBottomOf="@+id/price_discount" />
 
     <EditText
         android:id="@+id/trade"

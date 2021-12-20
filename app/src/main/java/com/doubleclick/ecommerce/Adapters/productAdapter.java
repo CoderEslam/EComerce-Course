@@ -1,5 +1,7 @@
 package com.doubleclick.ecommerce.Adapters;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.doubleclick.ecommerce.R;
 import com.doubleclick.ecommerce.model.ItemProduct;
+import com.doubleclick.ecommerce.ui.OrderProduct.OrderProductActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -61,7 +64,25 @@ public class productAdapter extends RecyclerView.Adapter<productAdapter.ProdactV
             name = itemView.findViewById(R.id.name);
             Desciption = itemView.findViewById(R.id.description);
 
-
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    itemView.getContext().startActivity(new Intent(itemView.getContext(), OrderProductActivity.class));
+                    Intent intent = new Intent(itemView.getContext(), OrderProductActivity.class);
+//                    intent.putExtra("name",itemProducts.get(getAdapterPosition()).getName());
+//                    intent.putExtra("dec",itemProducts.get(getAdapterPosition()).getDescription());
+//                    intent.putExtra("price",itemProducts.get(getAdapterPosition()).getPrice());
+//                    intent.putExtra("decsount",itemProducts.get(getAdapterPosition()).getDiscountPrice());
+//                    intent.putExtra("image",itemProducts.get(getAdapterPosition()).getImage());
+//                    intent.putExtra("id",itemProducts.get(getAdapterPosition()).getUserId());
+//                    intent.putExtra("trade",itemProducts.get(getAdapterPosition()).getTrade());
+                    intent.putExtra("affit",itemProducts.get(getAdapterPosition()));
+                    Log.e("itemProducts",itemProducts.get(getAdapterPosition()).toString());
+                    itemView.getContext().startActivity(intent);
+                }
+            });
         }
+
+
     }
 }

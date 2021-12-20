@@ -1,4 +1,4 @@
-package com.doubleclick.ecommerce;
+package com.doubleclick.ecommerce.ui.signin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.doubleclick.ecommerce.Home;
+import com.doubleclick.ecommerce.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -17,9 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class RegisterActiviy extends AppCompatActivity {
@@ -60,7 +60,7 @@ public class RegisterActiviy extends AppCompatActivity {
 //                    Users users = new Users(name, email, password,id);
                     reference = FirebaseDatabase.getInstance().getReference().child("Users");
                     reference.child(id).setValue(map);
-                    startActivity(new Intent(RegisterActiviy.this,Home.class));
+                    startActivity(new Intent(RegisterActiviy.this, Home.class));
                 }
 
             }

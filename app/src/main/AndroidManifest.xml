@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.doubleclick.ecommerce">
 
-
-
     <application
         android:name=".Application.BaseApploication"
         android:allowBackup="true"
@@ -13,9 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECommerce">
         <activity
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:name=".ui.Admin.AdminActivity"
+            android:name=".ui.OrderProduct.OrderProductActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.Admin.AdminActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".ui.Admin.UploadActivity"
             android:exported="false" />
@@ -25,13 +26,13 @@
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.ECommerce.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.signin.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActiviy"
+            android:name=".ui.signin.RegisterActiviy"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.signin.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

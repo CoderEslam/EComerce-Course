@@ -48,7 +48,7 @@ public class UploadActivity extends AppCompatActivity {
 
         Item_image = findViewById(R.id.Item_image);
         Item_name = findViewById(R.id.Item_name);
-        price = findViewById(R.id.price);
+        price = findViewById(R.id.price_discount);
         priceAfter = findViewById(R.id.priceAfter);
         description = findViewById(R.id.description);
         trade = findViewById(R.id.trade);

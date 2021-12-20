@@ -1,9 +1,14 @@
 package com.doubleclick.ecommerce.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Created By Eslam Ghazy on 12/13/2021
  */
-public class ItemProduct {
+public class ItemProduct  implements Serializable {
 
     private String Name;
     private String Description;
@@ -14,6 +19,9 @@ public class ItemProduct {
     private String trade;
     private String pushId;
     private String Category;
+
+    public ItemProduct() {
+    }
 
     public String getCategory() {
         return Category;
@@ -103,4 +111,6 @@ public class ItemProduct {
                 ", Category='" + Category + '\'' +
                 '}';
     }
+
+
 }
