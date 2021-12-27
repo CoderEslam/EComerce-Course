@@ -1,7 +1,7 @@
-package com.doubleclick.ecommerce.ui.gallery;
+package com.doubleclick.ecommerce.ui.Cart;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.doubleclick.ecommerce.Adapters.CartAdapter;
 import com.doubleclick.ecommerce.databinding.FragmentCartBinding;
 import com.doubleclick.ecommerce.model.Cart;
+import com.doubleclick.ecommerce.ui.AddressActivity;
 import com.doubleclick.ecommerce.viewModel.CartViewModel;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class CartFragment extends Fragment {
     private FragmentCartBinding binding;
     private CartViewModel cartViewModel;
 
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentCartBinding.inflate(inflater, container, false);
@@ -30,13 +32,27 @@ public class CartFragment extends Fragment {
         cartViewModel.getLiveDataCart().observe(getViewLifecycleOwner(), new Observer<ArrayList<Cart>>() {
             @Override
             public void onChanged(ArrayList<Cart> carts) {
-
+                double totalPrice = 0;
                 CartAdapter cartAdapter = new CartAdapter(carts);
                 binding.CartRecycler.setAdapter(cartAdapter);
+                for (int i = 0;i<carts.size();i++){
+                    totalPrice = totalPrice +  Double.parseDouble(carts.get(i).getPrice())*Double.parseDouble(carts.get(i).getQuntity());
+                    binding.price.setText(""+totalPrice);
+                }
 
 
             }
         });
+
+        binding.confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), AddressActivity.class));
+            }
+        });
+
+
+
         return binding.getRoot();
     }
 

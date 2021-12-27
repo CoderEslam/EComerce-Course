@@ -51,7 +51,7 @@ public class AdminActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         referenceProducts = FirebaseStorage.getInstance().getReference().child("ProductsImage");
-        allProduct = FirebaseDatabase.getInstance().getReference().child("AllProducts");
+        allProduct = FirebaseDatabase.getInstance().getReference().child("AllCategory");
 
 
     }
