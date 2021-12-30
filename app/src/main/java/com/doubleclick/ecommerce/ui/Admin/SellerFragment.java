@@ -4,8 +4,10 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.doubleclick.ecommerce.Adapters.CategoryAdapter;
 import com.doubleclick.ecommerce.R;
@@ -45,6 +48,8 @@ public class SellerFragment extends Fragment {
     private StorageReference referenceProducts;
     private DatabaseReference allProduct;
     private ProductViewModel productViewModel;
+    private TextView myOrder;
+    LifecycleOwner lifecycleOwner;
 
     public static SellerFragment newInstance(String param1, String param2) {
         SellerFragment fragment = new SellerFragment();
@@ -63,30 +68,38 @@ public class SellerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_admin, container, false);
+        View view = inflater.inflate(R.layout.fragment_seller, container, false);
         RecyclerView Products = view.findViewById(R.id.Products);
+
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+//        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+//        Products.setLayoutManager(linearLayoutManager);
+
+        myOrder = view.findViewById(R.id.myOrder);
+        lifecycleOwner = getViewLifecycleOwner();
         productViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
-        productViewModel.getLiveData().observe(this, new Observer<ArrayList<AllCategorys>>() {
+        productViewModel.getLiveData().observe(getViewLifecycleOwner(), new Observer<ArrayList<AllCategorys>>() {
             @Override
             public void onChanged(ArrayList<AllCategorys> allCategorysArrayList) {
+
+
+
                 Log.e("Data", allCategorysArrayList.toString());
                 CategoryAdapter categoryAdapter = new CategoryAdapter(allCategorysArrayList);
                 Products.setAdapter(categoryAdapter);
+
             }
         });
-        referenceProducts = FirebaseStorage.getInstance().getReference().child("ProductsImage");
-        allProduct = FirebaseDatabase.getInstance().getReference().child("AllProducts");
-//        ArrayList<Allprodusts> allprodusts = new ArrayList<>();
-//        allprodusts.add(new Allprodusts("T",R.drawable.saturn));
-//        allprodusts.add(new Allprodusts("R",R.drawable.saturn));
-//        allprodusts.add(new Allprodusts("Y",R.drawable.saturn));
-//        allprodusts.add(new Allprodusts("H",R.drawable.saturn));
-//        allprodusts.add(new Allprodusts("J",R.drawable.saturn));
-//        allprodusts.add(new Allprodusts("R",R.drawable.saturn));
-//        allprodusts.add(new Allprodusts("W",R.drawable.saturn));
-//        allprodusts.add(new Allprodusts("C",R.drawable.saturn));
-//        ProducctAdapter producctAdapter = new ProducctAdapter(allprodusts);
-//        Products.setAdapter(producctAdapter);
+
+        myOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+            }
+        });
+
         return view;
     }
 

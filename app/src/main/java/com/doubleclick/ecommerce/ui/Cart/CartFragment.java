@@ -23,6 +23,7 @@ public class CartFragment extends Fragment {
 
     private FragmentCartBinding binding;
     private CartViewModel cartViewModel;
+    ArrayList<Cart> cartArrayList;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class CartFragment extends Fragment {
         cartViewModel.getLiveDataCart().observe(getViewLifecycleOwner(), new Observer<ArrayList<Cart>>() {
             @Override
             public void onChanged(ArrayList<Cart> carts) {
+                cartArrayList = carts;
                 double totalPrice = 0;
                 CartAdapter cartAdapter = new CartAdapter(carts);
                 binding.CartRecycler.setAdapter(cartAdapter);
@@ -48,9 +50,10 @@ public class CartFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), AddressActivity.class));
+//                Intent intent = new Intent(getContext(), AddressActivity.class);
+//                intent.putExtra("array",cartArrayList);
             }
         });
-
 
 
         return binding.getRoot();

@@ -1,9 +1,12 @@
 package com.doubleclick.ecommerce.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created By Eslam Ghazy on 12/23/2021
  */
-public class Cart {
+public class Cart implements Parcelable {
 
     private String SellerID;
     private String iamge;
@@ -13,6 +16,32 @@ public class Cart {
     private String trade;
     private String pushId;
     private String BuyerId;
+
+    protected Cart(Parcel in) {
+        SellerID = in.readString();
+        iamge = in.readString();
+        name = in.readString();
+        price = in.readString();
+        quntity = in.readString();
+        trade = in.readString();
+        pushId = in.readString();
+        BuyerId = in.readString();
+    }
+
+    public static final Creator<Cart> CREATOR = new Creator<Cart>() {
+        @Override
+        public Cart createFromParcel(Parcel in) {
+            return new Cart(in);
+        }
+
+        @Override
+        public Cart[] newArray(int size) {
+            return new Cart[size];
+        }
+    };
+
+    public Cart() {
+    }
 
     public String getSellerID() {
         return SellerID;
@@ -91,5 +120,22 @@ public class Cart {
                 ", pushId='" + pushId + '\'' +
                 ", BuyerId='" + BuyerId + '\'' +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(SellerID);
+        dest.writeString(iamge);
+        dest.writeString(name);
+        dest.writeString(price);
+        dest.writeString(quntity);
+        dest.writeString(trade);
+        dest.writeString(pushId);
+        dest.writeString(BuyerId);
     }
 }

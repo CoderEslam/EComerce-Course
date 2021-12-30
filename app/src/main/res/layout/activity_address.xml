@@ -42,11 +42,10 @@
         app:layout_constraintTop_toBottomOf="@+id/phone" />
 
     <EditText
-        android:inputType="textPostalAddress"
         android:gravity="bottom"
-        android:lines="10"
-        android:maxLines="10"
-        android:id="@+id/Address"
+        android:lines="3"
+        android:maxLines="3"
+        android:id="@+id/address"
         android:hint="Address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,6 +53,7 @@
 
 
     <Button
+        android:id="@+id/okay"
         android:textAllCaps="false"
         android:text="Okay"
         android:layout_width="match_parent"
@@ -61,6 +61,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:visibility="gone"
+        android:id="@+id/animationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/buy_now" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
