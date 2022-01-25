@@ -4,23 +4,35 @@ package com.doubleclick.ecommerce.model;
  * Created By Eslam Ghazy on 12/30/2021
  */
 public class Order {
-    private String address,email,buyer,name,phone,price,pushId,quantity,seller;
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "address='" + address + '\'' +
-                ", email='" + email + '\'' +
-                ", buyer='" + buyer + '\'' +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", price='" + price + '\'' +
-                ", pushId='" + pushId + '\'' +
-                ", quantity='" + quantity + '\'' +
-                ", seller='" + seller + '\'' +
-                '}';
+
+    private String address;
+    private String email;
+    private String buyer;
+    private String name;
+    private String phone;
+    private String price;
+    private String pushId;
+    private String quantity;
+    private String seller;
+    private String image;
+    private String nameProduct;
+
+    public String getImage() {
+        return image;
     }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getNameProduct() {
+        return nameProduct;
+    }
+
+    public void setNameProduct(String nameProduct) {
+        this.nameProduct = nameProduct;
+    }
 
     public String getAddress() {
         return address;

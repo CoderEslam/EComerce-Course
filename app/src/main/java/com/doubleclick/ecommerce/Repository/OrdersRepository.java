@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import com.doubleclick.ecommerce.model.Order;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -33,12 +34,15 @@ public class OrdersRepository {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 DataSnapshot snapshot = task.getResult();
-                Log.e("DataSnapShot",task.getResult().toString());
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
                     Order order = dataSnapshot.getValue(Order.class);
-                    orderArrayList.add(order);
-                    orders.getAllOrders(orderArrayList);
+                    if (order.getBuyer().equals(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())){
+                        orderArrayList.add(order);
+                    }else if(order.getSeller().equals(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())){
+                        orderArrayList.add(order);
+                    }
                 }
+                orders.getAllOrders(orderArrayList);
             }
         });
     }

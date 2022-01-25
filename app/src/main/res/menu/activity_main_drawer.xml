@@ -39,10 +39,5 @@
             android:id="@+id/adminActivity"
             android:icon="@drawable/person_search"
             android:title="Admin" />
-
-        <item
-            android:id="@+id/logout"
-            android:icon="@drawable/poweroff"
-            android:title="Logout" />
     </group>
 </menu>

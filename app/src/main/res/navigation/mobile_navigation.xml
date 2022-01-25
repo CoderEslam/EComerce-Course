@@ -19,27 +19,27 @@
 
     <fragment
         android:id="@+id/nav_favorite"
-        android:name="com.doubleclick.ecommerce.ui.slideshow.SlideshowFragment"
+        android:name="com.doubleclick.ecommerce.ui.slideshow.SlideshowFavorit"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_favorite" />
     <fragment
         android:id="@+id/profile"
         android:name="com.doubleclick.ecommerce.ui.Profile.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/info"
         android:name="com.doubleclick.ecommerce.ui.info.InfoFragment"
-        android:label="fragment_info"
+        android:label="info"
         tools:layout="@layout/fragment_info" />
     <fragment
         android:id="@+id/adminFragment"
         android:name="com.doubleclick.ecommerce.ui.Admin.SellerFragment"
-        android:label="fragment_admin"
+        android:label="Seller"
         tools:layout="@layout/fragment_seller" />
     <activity
         android:id="@+id/adminActivity"
         android:name="com.doubleclick.ecommerce.ui.Admin.AdminActivity"
-        android:label="activity_admin"
+        android:label="Admin"
         tools:layout="@layout/activity_admin" />
 </navigation>

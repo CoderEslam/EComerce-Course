@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <androidx.recyclerview.widget.RecyclerView
-        tools:listitem="@layout/item_product"
+        tools:listitem="@layout/order_layout"
         android:id="@+id/recentOrder"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

@@ -9,6 +9,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +20,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.doubleclick.ecommerce.Adapters.OrderAdapter;
 import com.doubleclick.ecommerce.R;
+import com.doubleclick.ecommerce.model.Order;
 import com.doubleclick.ecommerce.model.Users;
+import com.doubleclick.ecommerce.viewModel.OrderViewModel;
+import com.doubleclick.ecommerce.viewModel.UserViewModel;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,6 +40,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,6 +59,9 @@ public class ProfileFragment extends Fragment {
     ProgressBar loading;
     String id;
     private StorageReference referenceProfile;
+    OrderViewModel orderViewModel;
+    RecyclerView oldOrder;
+    UserViewModel userViewModel;
 
 
     public ProfileFragment() {
@@ -78,24 +89,29 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         referenceProfile = FirebaseStorage.getInstance().getReference().child("ProfilesImage");
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        oldOrder = view.findViewById(R.id.recentOrder);
         mAuth = FirebaseAuth.getInstance();
         image = view.findViewById(R.id.image);
         loading = view.findViewById(R.id.loading);
         changeimage = view.findViewById(R.id.changeimage);
         id = mAuth.getCurrentUser().getUid().toString();
+        orderViewModel = new ViewModelProvider(this).get(OrderViewModel.class);
+        orderViewModel.getLivedate().observe(getViewLifecycleOwner(), new Observer<ArrayList<Order>>() {
+            @Override
+            public void onChanged(ArrayList<Order> orders) {
+                OrderAdapter orderAdapter=new OrderAdapter(orders);
+                oldOrder.setAdapter(orderAdapter);
+            }
+        });
         referenceUser = FirebaseDatabase.getInstance().getReference().child("Users").child(id);
         name = view.findViewById(R.id.name);
-        referenceUser.addValueEventListener(new ValueEventListener() {
+
+        userViewModel.UserLiveData().observe(getViewLifecycleOwner(), new Observer<Users>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Users users = snapshot.getValue(Users.class);
+            public void onChanged(Users users) {
                 name.setText(users.getName());
                 Picasso.get().load(users.getImage()).placeholder(R.drawable.saturn).into(image);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
         changeimage.setOnClickListener(new View.OnClickListener() {

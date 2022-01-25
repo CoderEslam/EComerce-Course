@@ -1,5 +1,6 @@
 package com.doubleclick.ecommerce.ui.Admin;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import com.doubleclick.ecommerce.Adapters.CategoryAdapter;
 import com.doubleclick.ecommerce.R;
 import com.doubleclick.ecommerce.model.AllCategorys;
+import com.doubleclick.ecommerce.ui.OrdersSeller.OrdersActivity;
 import com.doubleclick.ecommerce.viewModel.ProductViewModel;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -95,7 +97,7 @@ public class SellerFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-
+                startActivity(new Intent(getContext(), OrdersActivity.class));
 
             }
         });

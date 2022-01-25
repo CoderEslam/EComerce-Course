@@ -7,12 +7,14 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -43,7 +45,7 @@ public class AddressActivity extends AppCompatActivity {
     LottieAnimationView animationView;
     DatabaseReference OrdersReference;
     private CartViewModel cartViewModel;
-    ArrayList<Cart> cartArrayList =new ArrayList<>();
+    ArrayList<Cart> cartArrayList = new ArrayList<>();
     OrderViewModel orderViewModel;
 
 
@@ -61,7 +63,7 @@ public class AddressActivity extends AppCompatActivity {
         orderViewModel.getLivedate().observe(this, new Observer<ArrayList<Order>>() {
             @Override
             public void onChanged(ArrayList<Order> orders) {
-                Log.e("orders" ,orders.toString());
+                Log.e("orders", orders.toString());
             }
         });
         cartViewModel = new ViewModelProvider(this).get(CartViewModel.class);
@@ -69,30 +71,32 @@ public class AddressActivity extends AppCompatActivity {
             @Override
             public void onChanged(ArrayList<Cart> carts) {
                 cartArrayList = carts;
-                Log.e("cartArrayList",cartArrayList.toString());
+                Log.e("cartArrayList", cartArrayList.toString());
             }
         });
         OrdersReference = FirebaseDatabase.getInstance().getReference().child("Orders");
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Check()){
-                    for (Cart cart:cartArrayList){
+                if (Check()) {
+                    for (Cart cart : cartArrayList) {
                         String pushId = OrdersReference.push().getKey().toString();
-                        HashMap<String,Object> mapOrders = new HashMap<>();
-                        mapOrders.put("name",name.getText().toString());
-                        mapOrders.put("email",email.getText().toString());
-                        mapOrders.put("phone",phone.getText().toString());
-                        mapOrders.put("address",address.getText().toString());
-                        mapOrders.put("buyer",cart.getBuyerId()); // FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
-                        mapOrders.put("price",cart.getPrice());
-                        mapOrders.put("seller",cart.getSellerID());
-                        mapOrders.put("quantity",cart.getQuntity());
-                        mapOrders.put("pushId",pushId);
+                        HashMap<String, Object> mapOrders = new HashMap<>();
+                        mapOrders.put("name", name.getText().toString()); // name of parson
+                        mapOrders.put("email", email.getText().toString());
+                        mapOrders.put("phone", phone.getText().toString());
+                        mapOrders.put("address", address.getText().toString());
+                        mapOrders.put("buyer", cart.getBuyerId()); // FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
+                        mapOrders.put("price", cart.getPrice());
+                        mapOrders.put("seller", cart.getSellerID());
+                        mapOrders.put("quantity", cart.getQuntity());
+                        mapOrders.put("image", cart.getIamge());
+                        mapOrders.put("nameProduct", cart.getName()); // name of product
+                        mapOrders.put("pushId", pushId);
                         OrdersReference.child(pushId).setValue(mapOrders).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     animationView.setVisibility(View.VISIBLE);
                                 }
                             }
@@ -103,14 +107,38 @@ public class AddressActivity extends AppCompatActivity {
                     email.setText("");
                     address.setText("");
                 }
+
                 // send text by whatsapp
-              /*  Intent sendIntent = new Intent();
+
+               /* try {
+                Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
                 sendIntent.setType("text/plain");
                 sendIntent.setPackage("com.whatsapp");
                 startActivity(Intent.createChooser(sendIntent, ""));
-                startActivity(sendIntent);*/
+                startActivity(sendIntent);
+                }catch (ActivityNotFoundException e){
+                    Toast.makeText(AddressActivity.this, "you don't have whatsapp", Toast.LENGTH_SHORT).show();
+                    *//*String urlString = "https://whatsapp-messenger.ar.uptodown.com/android/download";
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlString));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setPackage("com.android.chrome");
+                    try {
+                        startActivity(intent);
+                    } catch (ActivityNotFoundException ex) {
+                        // Chrome browser presumably not installed so allow user to choose instead
+                        intent.setPackage(null);
+                        startActivity(intent);
+                    }*//*
+
+                    *//*Intent i = new Intent(android.content.Intent.ACTION_VIEW);
+                    i.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp"));
+                    startActivity(i);*//*
+
+                }*/
+
+
             }
         });
 

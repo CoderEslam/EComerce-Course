@@ -12,8 +12,10 @@ import android.widget.Toast;
 
 import com.doubleclick.ecommerce.R;
 import com.doubleclick.ecommerce.model.ItemProduct;
+import com.doubleclick.ecommerce.model.Users;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -31,13 +33,14 @@ public class OrderProductActivity extends AppCompatActivity {
     int order = 0;
     ItemProduct itemProduct;
     FirebaseAuth auth;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_product);
-
-        itemProduct = (ItemProduct) getIntent().getSerializableExtra("affit");
+        fab = findViewById(R.id.fab);
+        itemProduct = (ItemProduct) getIntent().getSerializableExtra("itemProduct");
         image = findViewById(R.id.imageProduct);
         auth = FirebaseAuth.getInstance();
         String id = auth.getCurrentUser().getUid().toString();
@@ -98,6 +101,13 @@ public class OrderProductActivity extends AppCompatActivity {
             }
         });
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                putFavorite();
+            }
+        });
+
     }
 
     private void AddToCart() {
@@ -118,5 +128,20 @@ public class OrderProductActivity extends AppCompatActivity {
                 Toast.makeText(OrderProductActivity.this,"Done",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void putFavorite(){
+
+        DatabaseReference favorit = FirebaseDatabase.getInstance().getReference().child("Favorit");
+        String pushId = favorit.push().getKey().toString();
+        HashMap<String,Object> map = new HashMap<>();
+        map.put("pushIdItem",itemProduct.getPushId());
+        map.put("pushIdFavorit",pushId);
+        map.put("UserId",FirebaseAuth.getInstance().getCurrentUser().getUid().toString());
+//        map.put("dddd",new Users("name","email","123456"));
+//        map.put("fffff",new Users("name","email","123456"));
+
+        favorit.child(pushId).setValue(map);
+
     }
 }

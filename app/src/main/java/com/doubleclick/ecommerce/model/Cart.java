@@ -17,6 +17,7 @@ public class Cart implements Parcelable {
     private String pushId;
     private String BuyerId;
 
+
     protected Cart(Parcel in) {
         SellerID = in.readString();
         iamge = in.readString();

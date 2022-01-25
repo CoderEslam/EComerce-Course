@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,12 +47,13 @@ public class productAdapter extends RecyclerView.Adapter<productAdapter.ProdactV
         Picasso.get().load(itemProduct.getImage()).into(holder.product_image);
         holder.name.setText(itemProduct.getName());
         holder.Desciption.setText(itemProduct.getDescription());
-
+//        Log.e("Position" ,""+position);
     }
 
     @Override
     public int getItemCount() {
         return itemProducts.size();
+//        return 100;
     }
 
     public class ProdactViewHolder extends RecyclerView.ViewHolder {
@@ -76,7 +78,7 @@ public class productAdapter extends RecyclerView.Adapter<productAdapter.ProdactV
 //                    intent.putExtra("image",itemProducts.get(getAdapterPosition()).getImage());
 //                    intent.putExtra("id",itemProducts.get(getAdapterPosition()).getUserId());
 //                    intent.putExtra("trade",itemProducts.get(getAdapterPosition()).getTrade());
-                    intent.putExtra("affit",itemProducts.get(getAdapterPosition()));
+                    intent.putExtra("itemProduct",itemProducts.get(getAdapterPosition()));
                     Log.e("itemProducts",itemProducts.get(getAdapterPosition()).toString());
                     itemView.getContext().startActivity(intent);
                 }
