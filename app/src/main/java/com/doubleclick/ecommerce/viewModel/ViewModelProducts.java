@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class ViewModelProducts extends ViewModel  implements AllProducts.ProductListener {
 
 
-    MutableLiveData<ArrayList<ItemProduct>> mutableLiveData = new MutableLiveData();
+    MutableLiveData<ArrayList<ArrayList<ItemProduct>>> mutableLiveData = new MutableLiveData();
     AllProducts allProducts = new AllProducts(this);
 
 
@@ -23,12 +23,12 @@ public class ViewModelProducts extends ViewModel  implements AllProducts.Product
         allProducts.getAllProducts();
     }
 
-    public LiveData<ArrayList<ItemProduct>> getLiveData(){
+    public LiveData<ArrayList<ArrayList<ItemProduct>>> getLiveData(){
         return mutableLiveData;
     }
 
     @Override
-    public void getAllProducts(ArrayList<ItemProduct> itemProducts) {
+    public void getAllProducts(ArrayList<ArrayList<ItemProduct>> itemProducts) {
         mutableLiveData.setValue(itemProducts);
     }
 }

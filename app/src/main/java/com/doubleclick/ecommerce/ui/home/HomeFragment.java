@@ -14,11 +14,14 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.doubleclick.ecommerce.Adapters.BaseAdapter;
 import com.doubleclick.ecommerce.Adapters.productAdapter;
 import com.doubleclick.ecommerce.R;
 import com.doubleclick.ecommerce.Repository.AllProducts;
 import com.doubleclick.ecommerce.databinding.FragmentHomeBinding;
+import com.doubleclick.ecommerce.model.AllCategorys;
 import com.doubleclick.ecommerce.model.ItemProduct;
+import com.doubleclick.ecommerce.viewModel.ProductViewModel;
 import com.doubleclick.ecommerce.viewModel.ViewModelProducts;
 
 import java.util.ArrayList;
@@ -27,7 +30,11 @@ public class HomeFragment extends Fragment {
 
 
     ViewModelProducts viewModelProducts;
+    ProductViewModel AllCategoryViewModel;
     RecyclerView All_product;
+    ArrayList<ItemProduct> arrayListitemProducts = new ArrayList<>();
+    ArrayList<AllCategorys> arrayListallCategorys = new ArrayList<>();
+    ArrayList<ArrayList<ItemProduct>> arrayListArrayList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -36,14 +43,38 @@ public class HomeFragment extends Fragment {
         All_product = view.findViewById(R.id.All_product);
 
         viewModelProducts = new ViewModelProvider(this).get(ViewModelProducts.class);
-        viewModelProducts.getLiveData().observe(this, new Observer<ArrayList<ItemProduct>>() {
+        AllCategoryViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
+        viewModelProducts.getLiveData().observe(getViewLifecycleOwner(), new Observer<ArrayList<ArrayList<ItemProduct>>>() {
             @Override
-            public void onChanged(ArrayList<ItemProduct> itemProducts) {
+            public void onChanged(ArrayList<ArrayList<ItemProduct>> itemProducts) {
                 Log.e("HomeFragment",itemProducts.toString());
-                productAdapter productAdapter = new productAdapter(itemProducts);
-                All_product.setAdapter(productAdapter);
+                BaseAdapter baseAdapter = new BaseAdapter(itemProducts);
+                All_product.setAdapter(baseAdapter);
+//                productAdapter productAdapter = new productAdapter(itemProducts);
+//                All_product.setAdapter(productAdapter);
+//                arrayListitemProducts = itemProducts;
+                Log.e("All",itemProducts.toString());
+
             }
         });
+
+        AllCategoryViewModel.getLiveData().observe(getViewLifecycleOwner(), new Observer<ArrayList<AllCategorys>>() {
+            @Override
+            public void onChanged(ArrayList<AllCategorys> allCategorys) {
+                arrayListallCategorys = allCategorys;
+            }
+        });
+
+        for (int i = 0; i < arrayListallCategorys.size(); i++) {
+            ArrayList<ItemProduct> itemArrayList = new ArrayList<>();
+            for (ItemProduct item : arrayListitemProducts) {
+                if (item.getCategory().equals(arrayListallCategorys.get(i))) { // equals
+                    itemArrayList.add(item);
+                }
+            }
+            arrayListArrayList.add(itemArrayList);
+        }
+
 
         return view;
     }
